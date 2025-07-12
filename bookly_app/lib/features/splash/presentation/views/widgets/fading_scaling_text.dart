@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class FadingScalingText extends StatelessWidget {
@@ -13,7 +12,6 @@ class FadingScalingText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Opacity(
       opacity: textFadeAnimation.value,
       child: Transform.scale(
