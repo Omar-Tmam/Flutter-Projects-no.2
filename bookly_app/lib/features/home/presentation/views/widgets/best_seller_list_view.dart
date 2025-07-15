@@ -1,6 +1,5 @@
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
-import 'package:bookly_app/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view_item.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class BestSellerListView extends StatelessWidget {
           return SliverList(
             delegate: SliverChildBuilderDelegate(childCount: state.books.length,
                 (context, index) {
-              return  Padding(
+              return Padding(
                 padding: EdgeInsets.only(right: 12),
                 child: BookListViewItem(
                   bookModel: state.books[index],
@@ -26,11 +25,18 @@ class BestSellerListView extends StatelessWidget {
             }),
           );
         } else if (state is NewestBooksFailure) {
-          return CustomErrorWidget(
-            errMessage: state.errMessage,
+          return SliverFillRemaining(
+            child: CustomErrorWidget(
+              errMessage: state.errMessage,
+            ),
           );
         } else {
-          return SliverToBoxAdapter(child: CustomLoadingIndicator());
+          return SliverToBoxAdapter(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.6,
+              child: Center(child: CustomLoadingIndicator()),
+            ),
+          );
         }
       },
     );
