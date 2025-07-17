@@ -70,11 +70,8 @@ class BookListViewItem extends StatelessWidget {
                                 .copyWith(fontWeight: FontWeight.bold),
                           ),
                           BookRating(
-                            rating: bookModel.volumeInfo?.averageRating ??
-                                double.parse((Random().nextDouble() * 5)
-                                    .toStringAsFixed(2)),
-                            count: bookModel.volumeInfo?.ratingsCount ??
-                                Random().nextInt(2000) + 1000,
+                            rating: bookModel.volumeInfo!.averageRating!,
+                            count: bookModel.volumeInfo!.ratingsCount!,
                           ),
                         ],
                       ),

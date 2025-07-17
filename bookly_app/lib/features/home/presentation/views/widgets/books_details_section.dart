@@ -43,10 +43,8 @@ class BookDetailsSection extends StatelessWidget {
         ),
         const SizedBox(height: 18),
         BookRating(
-          rating: bookModel.volumeInfo?.averageRating ??
-              double.parse((Random().nextDouble() * 5).toStringAsFixed(2)),
-          count: bookModel.volumeInfo?.ratingsCount ??
-              Random().nextInt(2000) + 1000,
+          rating: bookModel.volumeInfo!.averageRating!,
+          count: bookModel.volumeInfo!.ratingsCount!,
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         const SizedBox(height: 36),
