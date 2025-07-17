@@ -8,11 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem(
-      {super.key,
-      this.padding = const EdgeInsets.only(left: 30),
-      required this.bookModel});
-  final EdgeInsetsGeometry padding;
+  const BookListViewItem({super.key, this.padding, required this.bookModel});
+  final EdgeInsetsGeometry? padding;
   final BookModel bookModel;
 
   @override
@@ -27,7 +24,7 @@ class BookListViewItem extends StatelessWidget {
         child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.18,
           child: Padding(
-            padding: padding,
+            padding: padding ?? const EdgeInsets.only(left: 30),
             child: Row(
               children: [
                 CustomBookImage(
@@ -64,8 +61,8 @@ class BookListViewItem extends StatelessWidget {
                         children: [
                           Text(
                             bookModel.saleInfo!.saleability!,
-                            style: Styles.textStyle14
-                                .copyWith(fontWeight: FontWeight.bold),
+                            style: Styles.textStyle16.copyWith(
+                                fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                           BookRating(
                             rating: bookModel.volumeInfo!.averageRating!,

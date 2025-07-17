@@ -1,4 +1,6 @@
+import 'package:bookly_app/features/search/presentation/manager/search_books_cubit/search_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomSerachTextField extends StatelessWidget {
@@ -7,8 +9,11 @@ class CustomSerachTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+      padding: const EdgeInsets.only(top: 40.0, bottom: 16.0),
       child: TextField(
+        onSubmitted: (value) {
+          BlocProvider.of<SearchBooksCubit>(context).fetchSearchResults(query: value);
+        },
         decoration: InputDecoration(
             enabledBorder: buildOutlinedInputBorder(),
             focusedBorder: buildOutlinedInputBorder(),

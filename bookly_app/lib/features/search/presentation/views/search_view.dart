@@ -8,7 +8,9 @@ class SearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SearchViewBody(),
+        child: SearchViewBody(
+          
+        ),
       ),
     );
   }
