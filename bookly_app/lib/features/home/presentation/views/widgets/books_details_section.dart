@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/books_action.dart';
@@ -47,8 +45,10 @@ class BookDetailsSection extends StatelessWidget {
           count: bookModel.volumeInfo!.ratingsCount!,
           mainAxisAlignment: MainAxisAlignment.center,
         ),
-        const SizedBox(height: 36),
-        BooksAction(),
+        SizedBox(height: 36),
+        BooksAction(
+          bookModel: bookModel,
+        ),
       ],
     );
   }
