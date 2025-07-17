@@ -1,4 +1,3 @@
-
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/styles.dart';
@@ -64,8 +63,8 @@ class BookListViewItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Free',
-                            style: Styles.textStyle20
+                            bookModel.saleInfo!.saleability!,
+                            style: Styles.textStyle14
                                 .copyWith(fontWeight: FontWeight.bold),
                           ),
                           BookRating(

@@ -8,15 +8,19 @@ import 'package:dio/dio.dart';
 class HomeRepoImplementation implements HomeRepo {
   final ApiService apiService;
   HomeRepoImplementation(this.apiService);
+
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
       var data = await apiService.get(
-          endPoint: 'volumes?Filtering=free-ebooks&q=Flutter');
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
-      }
+        endPoint: 'volumes?Filtering=free-ebooks&q=Programming',
+      );
+
+      List<BookModel> books = (data['items'] as List)
+          .where((item) => item['saleInfo']['saleability'] != 'NOT_FOR_SALE')
+          .map((item) => BookModel.fromJson(item))
+          .toList();
+
       return Right(books);
     } on Exception catch (e) {
       if (e is DioException) {
@@ -30,11 +34,14 @@ class HomeRepoImplementation implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-          endPoint: 'volumes?Filtering=free-ebooks&q=anime');
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
-      }
+        endPoint: 'volumes?Filtering=free-ebooks&q=anime',
+      );
+
+      List<BookModel> books = (data['items'] as List)
+          .where((item) => item['saleInfo']['saleability'] != 'NOT_FOR_SALE')
+          .map((item) => BookModel.fromJson(item))
+          .toList();
+
       return Right(books);
     } on Exception catch (e) {
       if (e is DioException) {
@@ -45,15 +52,19 @@ class HomeRepoImplementation implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
-      {required String category}) async {
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({
+    required String category,
+  }) async {
     try {
       var data = await apiService.get(
-          endPoint: 'volumes?Filtering=free-ebooks&q=$category');
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
-      }
+        endPoint: 'volumes?Filtering=free-ebooks&q=$category',
+      );
+
+      List<BookModel> books = (data['items'] as List)
+          .where((item) => item['saleInfo']['saleability'] != 'NOT_FOR_SALE')
+          .map((item) => BookModel.fromJson(item))
+          .toList();
+
       return Right(books);
     } on Exception catch (e) {
       if (e is DioException) {

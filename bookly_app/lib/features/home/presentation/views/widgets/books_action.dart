@@ -15,8 +15,8 @@ class BooksAction extends StatelessWidget {
       child: Row(children: [
         Expanded(
             child: CustomButton(
-          fontSize: 16,
-          text: 'Free',
+          fontSize: 14,
+          text: bookModel.saleInfo!.saleability!,
           backgroundColor: Colors.white,
           textColor: Colors.black,
           borderRadius: BorderRadius.only(
