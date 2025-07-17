@@ -1,11 +1,15 @@
+import 'dart:math';
+
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/books_action.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/books_rating.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({super.key, required this.bookModel});
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +18,23 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .17),
-          child: const CustomBookImage(
-            imageUrl: '',
+          child: CustomBookImage(
+            imageUrl: bookModel.volumeInfo!.imageLinks?.thumbnail ?? '',
           ),
         ),
         const SizedBox(height: 43),
-        Text(
-          'The Jungle Book',
-          style: Styles.textStyle30,
+        Center(
+          child: Text(
+            textAlign: TextAlign.center,
+            bookModel.volumeInfo!.title!,
+            style: Styles.textStyle30,
+          ),
         ),
         const SizedBox(height: 6),
         Opacity(
           opacity: 0.7,
           child: Text(
-            'Rudyard Kipling',
+            bookModel.volumeInfo?.authors?[0] ?? 'Unknown Author',
             style: Styles.textStyle18.copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w500,
@@ -36,8 +43,10 @@ class BookDetailsSection extends StatelessWidget {
         ),
         const SizedBox(height: 18),
         BookRating(
-          rating: 4,
-          count: 2398,
+          rating: bookModel.volumeInfo?.averageRating ??
+              double.parse((Random().nextDouble() * 5).toStringAsFixed(2)),
+          count: bookModel.volumeInfo?.ratingsCount ??
+              Random().nextInt(2000) + 1000,
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         const SizedBox(height: 36),
