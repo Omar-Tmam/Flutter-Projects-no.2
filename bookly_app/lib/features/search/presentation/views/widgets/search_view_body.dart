@@ -28,7 +28,7 @@ class SearchViewBody extends StatelessWidget {
                   builder: (context, state) {
                     if (state is SearchBooksSuccess) {
                       return SizedBox(
-                        height: MediaQuery.of(context).size.height,
+                        height: MediaQuery.of(context).size.height * 0.77,
                         child: ListView.builder(
                           itemCount: state.books.length,
                           itemBuilder: (context, index) {
