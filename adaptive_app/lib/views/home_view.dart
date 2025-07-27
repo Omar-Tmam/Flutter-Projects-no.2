@@ -1,3 +1,4 @@
+import 'package:adaptive_app/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -6,6 +7,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffdbdbdb),
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: Icon(
@@ -13,6 +15,7 @@ class HomeView extends StatelessWidget {
           color: Colors.white,
         ),
       ),
+      body: HomeViewBody(),
     );
   }
 }
