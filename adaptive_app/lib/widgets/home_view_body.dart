@@ -1,3 +1,4 @@
+import 'package:adaptive_app/widgets/custom_list.dart';
 import 'package:adaptive_app/widgets/custom_list_view.dart';
 import 'package:adaptive_app/widgets/custom_sliver_grid.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class HomeViewBody extends StatelessWidget {
           SliverToBoxAdapter(
             child: LayoutBuilder(builder: (context, constraints) {
               if (constraints.minWidth > 600) {
-                return Text('tablet');
+                return CustomList();
               } else {
                 return CustomSliverGrid();
               }
