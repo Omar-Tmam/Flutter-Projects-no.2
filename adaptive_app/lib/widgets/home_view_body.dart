@@ -1,6 +1,4 @@
-import 'package:adaptive_app/widgets/custom_list.dart';
-import 'package:adaptive_app/widgets/custom_list_view.dart';
-import 'package:adaptive_app/widgets/custom_sliver_grid.dart';
+
 import 'package:adaptive_app/widgets/desktop_layout.dart';
 import 'package:adaptive_app/widgets/mobile_layout.dart';
 import 'package:adaptive_app/widgets/tablet_layout.dart';
