@@ -16,7 +16,15 @@ class HomeViewBody extends StatelessWidget {
               height: 16,
             ),
           ),
-          CustomSliverGrid(),
+          SliverToBoxAdapter(
+            child: LayoutBuilder(builder: (context, constraints) {
+              if (constraints.minWidth > 600) {
+                return Text('tablet');
+              } else {
+                return CustomSliverGrid();
+              }
+            }),
+          ),
           CustomSliverListView(),
         ],
       ),

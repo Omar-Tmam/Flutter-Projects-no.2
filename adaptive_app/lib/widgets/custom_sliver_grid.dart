@@ -6,7 +6,9 @@ class CustomSliverGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid.builder(
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(), // Disable scrolling for the grid
       itemCount: 4,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -19,5 +21,3 @@ class CustomSliverGrid extends StatelessWidget {
     );
   }
 }
-
-
